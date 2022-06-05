@@ -1,6 +1,8 @@
 node_modules
 **/*.js.map
 
+dist
+
 app.js
 
 package-lock.json
