@@ -1,22 +1,56 @@
-let button = document.getElementById("button");
-let input1 = document.getElementById("input1") as HTMLInputElement;
-let input2 = document.getElementById("input2") as HTMLInputElement;
-
-function somarNumeros(numero1: number, numero2: number, devePrintar: boolean, frase: string) {
-  let resultado = numero1 + numero2;
-  if (devePrintar) {
-    console.log(`${frase} ${resultado}`);
-  }
-  return resultado;
+enum Profissao {
+    Atriz,
+    Padeiro,
+    Desenvolvedor,
+    Professor,
+    Estudante
 }
 
-let devePrintar = true;
-let frase = "O valor é: ";
-
-if (button) {
-  button.addEventListener('click', function () {
-    if (input1 && input2){
-      somarNumeros(Number(input1.value), Number(input2.value), devePrintar, frase);
-    }
-  });
+interface Pessoa {
+    nome: string,
+    idade: number,
+    profissao: Profissao
 }
+
+interface Estudante extends Pessoa{
+  materiais: string[]
+}
+
+const pessoa1: Pessoa = {
+    nome: 'joao',
+    idade: 21,
+    profissao: Profissao.Padeiro
+};
+
+const pessoa2: Pessoa = {
+    nome: 'maria',
+    idade: 35,
+    profissao: Profissao.Atriz
+};
+
+const pessoa3: Pessoa = {
+    nome: 'marcos',
+    idade: 35,
+    profissao: Profissao.Professor
+};
+
+const pessoa4: Pessoa  = {
+    nome: "jose",
+    idade: 27,
+    profissao: Profissao.Desenvolvedor
+}
+
+const pessoa5: Estudante = {
+  nome: "Edson",
+  idade: 40,
+  profissao: Profissao.Estudante,
+  materiais: ['Caderno', 'Livros']
+}
+
+function listar(lista: string[]) {
+    for (const item of lista) {
+        console.log('- ', item);
+    }    
+}
+
+listar(pessoa5.materiais);
